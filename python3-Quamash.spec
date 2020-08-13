@@ -12,7 +12,9 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-setuptools
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{mod_name}}
 # import fails without at least one pyqt implementation installed
-BuildRequires:  python%{python3_pkgversion}-PyQt4
+# on openSUSE Leap 15, Qt4 based build fails because python3-qt4 requires python3-sip that provides skeleton PyQt5
+# namespace so we'll use Qt5 based build that brings the whole Qt5 namespace and build works
+BuildRequires:  python%{python3_pkgversion}-PyQt5
 BuildArch:      noarch
 
 %description
